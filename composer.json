@@ -1,16 +1,16 @@
 {
-    "name": "pantheon-systems\/drupal-9-with-circleci-orb",
+    "name": "pantheon-systems/drupal-9-with-circleci-orb",
     "description": "Install Drupal 9 with Composer on Pantheon using CI.",
     "type": "project",
     "license": "MIT",
     "repositories": [
         {
             "type": "composer",
-            "url": "https:\/\/packages.drupal.org\/8"
+            "url": "https://packages.drupal.org/8"
         },
         {
             "type": "composer",
-            "url": "https:\/\/packages.drupal.org\/8"
+            "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
@@ -25,55 +25,55 @@
         "zaporylie/composer-drupal-optimizations": "^1.1"
     },
     "conflict": {
-        "drupal\/drupal": "*"
+        "drupal/drupal": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
         "enable-patching": true,
         "installer-paths": {
-            "web\/core": [
+            "web/core": [
                 "type:drupal-core"
             ],
-            "web\/libraries\/{$name}": [
+            "web/libraries/{$name}": [
                 "type:drupal-library"
             ],
-            "web\/modules\/contrib\/{$name}": [
+            "web/modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
-            "web\/profiles\/contrib\/{$name}": [
+            "web/profiles/contrib/{$name}": [
                 "type:drupal-profile"
             ],
-            "web\/themes\/contrib\/{$name}": [
+            "web/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
-            "drush\/Commands\/contrib\/{$name}": [
+            "drush/Commands/contrib/{$name}": [
                 "type:drupal-drush"
             ],
-            "web\/private\/scripts\/quicksilver\/{$name}\/": [
+            "web/private/scripts/quicksilver/{$name}/": [
                 "type:quicksilver-script"
             ]
         },
         "patches": {
-            "drupal\/core": {
-                "db version": "https:\/\/raw.githubusercontent.com\/stevector\/drupal-9-project\/master\/patches\/issue-2--mariadb-version.patch"
+            "drupal/core": {
+                "db version": "https://raw.githubusercontent.com/stevector/drupal-9-project/master/patches/issue-2--mariadb-version.patch"
             }
         },
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
-            "drupal\/core": "-p2"
+            "drupal/core": "-p2"
         },
         "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
         "drupal-scaffold": {
             "allowed-packages": [
-                "pantheon-systems\/drupal-integrations"
+                "pantheon-systems/drupal-integrations"
             ],
             "locations": {
-                "web-root": ".\/web"
+                "web-root": "./web"
             },
             "file-mapping": {
-                "[project-root]\/.editorconfig": false,
-                "[project-root]\/pantheon.upstream.yml": false
+                "[project-root]/.editorconfig": false,
+                "[project-root]/pantheon.upstream.yml": false
             }
         },
         "build-env": {
@@ -83,17 +83,17 @@
     "scripts": {
         "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
         "unit-test": "echo 'No unit test step defined.'",
-        "lint": "find web\/modules\/custom web\/themes\/custom -name '*.php' -exec php -l {} \\;",
+        "lint": "find web/modules/custom web/themes/custom -name '*.php' -exec php -l {} \\;",
         "code-sniff": [
-            ".\/vendor\/bin\/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor .\/web\/modules\/custom",
-            ".\/vendor\/bin\/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor .\/web\/themes\/custom",
-            ".\/vendor\/bin\/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor .\/web\/modules\/custom",
-            ".\/vendor\/bin\/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor .\/web\/themes\/custom"
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom",
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/custom",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/custom"
         ]
     },
     "autoload": {
         "classmap": [
-            "scripts\/composer\/ScriptHandler.php"
+            "scripts/composer/ScriptHandler.php"
         ]
     },
     "config": {
