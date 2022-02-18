@@ -19,13 +19,16 @@
     ],
     "require": {
         "php": "^7.4",
-        "composer/installers": "~1.9 || ~2.0",
+        "composer/installers": "~1.9",
         "cweagans/composer-patches": "^1.7",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
+        "drush-ops/behat-drush-endpoint": "^9.3",
         "drush/drush": "^10",
         "goalgorilla/open_social": "~11.0.1",
-        "pantheon-systems/drupal-integrations": "^8"
+        "monolog/monolog": "^2.3.5",
+        "pantheon-systems/drupal-integrations": "^8",
+        "pantheon-systems/quicksilver-pushback": "^2.0"
     },
     "require-dev": {
         "behat/behat": "^3.10",
@@ -134,6 +137,7 @@
             "composer/installers": true,
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
+            "drush-ops/behat-drush-endpoint":true,
             "oomphinc/composer-installers-extender": true,
             "zaporylie/composer-drupal-optimizations": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
