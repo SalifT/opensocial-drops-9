@@ -6,13 +6,13 @@ Feature: Content
   @api
   Scenario: Create many nodes
     Given "event" content:
-    | title          |
-    | Event test one |
-    | Event test two |
+    | title          | description                |
+    | Event test one | Event test one description |
+    | Event test two | Event test two description |
     And "topic" content:
-    | title             |
-    | First topic test  |
-    | Second topic test |
+    | title             | description                   |
+    | First topic test  | Topic test first description  |
+    | Second topic test | Topic test second description |
     And I am logged in as a user with the "administrator" role
     When I go to "admin/content"
     Then I should see "Event test one"
@@ -23,7 +23,7 @@ Feature: Content
   @api
   Scenario: Create users
     Given users:
-    | mail            | username | password    | status |
+    | mail            | name     | password    | status |
     | joe@example.com | Joe User | _8UserJoe8_ | 1      |
     And I am logged in as a user with the "administrator" role
     When I visit "admin/people"
@@ -32,7 +32,7 @@ Feature: Content
   @api
   Scenario: Login as a user created during this scenario
     Given users:
-    | mail             | username  | password     | status |
+    | mail             | name      | password     | status |
     | test@example.com | Test User | _8UserTest8_ | 1      |
     When I am logged in as "Test User"
     Then I should see the link "Log out"
@@ -40,9 +40,9 @@ Feature: Content
   @api
   Scenario: Create many terms
     Given "social_tagging" terms:
-    | name    |
-    | Social Tag one |
-    | Social Tag two |
+    | name           | placement     |
+    | Social Tag one | Main category |
+    | Social Tag two | Main category |
     And I am logged in as a user with the "administrator" role
     When I go to "admin/structure/taxonomy/manage/social_tagging/overview"
     Then I should see "Social Tag one"
@@ -51,7 +51,7 @@ Feature: Content
   @api
   Scenario: Create nodes with specific authorship
     Given users:
-    | username | mail            | status |
+    | name     | mail            | status |
     | Joe User | joe@example.com | 1      |
     And "event" content:
     | title        | author   | promote |
