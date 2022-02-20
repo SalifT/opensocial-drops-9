@@ -5,26 +5,26 @@ Feature: Content
 
   @api
   Scenario: Create many nodes
-    Given "page" content:
-    | title    |
-    | Page one |
-    | Page two |
-    And "article" content:
+    Given "event" content:
     | title          |
-    | First article  |
-    | Second article |
+    | Event test one |
+    | Event test two |
+    And "topic" content:
+    | title             |
+    | First topic test  |
+    | Second topic test |
     And I am logged in as a user with the "administrator" role
     When I go to "admin/content"
-    Then I should see "Page one"
-    And I should see "Page two"
-    And I should see "First article"
-    And I should see "Second article"
+    Then I should see "Event test one"
+    And I should see "Event test two"
+    And I should see "First topic test"
+    And I should see "Second topic test"
 
   @api
   Scenario: Create users
     Given users:
-    | name     | mail            | status |
-    | Joe User | joe@example.com | 1      |
+    | mail            | username | password    | status |
+    | joe@example.com | Joe User | _8UserJoe8_ | 1      |
     And I am logged in as a user with the "administrator" role
     When I visit "admin/people"
     Then I should see the link "Joe User"
@@ -32,32 +32,32 @@ Feature: Content
   @api
   Scenario: Login as a user created during this scenario
     Given users:
-    | name      | status | mail             |
-    | Test user |      1 | test@example.com |
-    When I am logged in as "Test user"
+    | mail             | username  | password     | status |
+    | test@example.com | Test User | _8UserTest8_ | 1      |
+    When I am logged in as "Test User"
     Then I should see the link "Log out"
 
   @api
   Scenario: Create many terms
-    Given "tags" terms:
+    Given "social_tagging" terms:
     | name    |
-    | Tag one |
-    | Tag two |
+    | Social Tag one |
+    | Social Tag two |
     And I am logged in as a user with the "administrator" role
-    When I go to "admin/structure/taxonomy/manage/tags/overview"
-    Then I should see "Tag one"
-    And I should see "Tag two"
+    When I go to "admin/structure/taxonomy/manage/social_tagging/overview"
+    Then I should see "Social Tag one"
+    And I should see "Social Tag two"
 
   @api
   Scenario: Create nodes with specific authorship
     Given users:
-    | name     | mail            | status |
+    | username | mail            | status |
     | Joe User | joe@example.com | 1      |
-    And "article" content:
-    | title          | author   | promote |
-    | Article by Joe | Joe User | 1       |
+    And "event" content:
+    | title        | author   | promote |
+    | Event by Joe | Joe User | 1       |
     When I am logged in as a user with the "administrator" role
-    And I am on the homepage
-    Then I should see the link "Article by Joe"
-    When I follow "Article by Joe"
-    Then I should see the text "Article by Joe"
+    And I am on the "Home" page
+    Then I should see the link "Event by Joe"
+    When I follow "Event by Joe"
+    Then I should see the text "Event by Joe"
