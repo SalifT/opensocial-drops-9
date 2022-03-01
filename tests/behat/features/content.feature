@@ -81,18 +81,3 @@ Feature: Content
     And I fill in the "edit-body-0-value" WYSIWYG editor with "Body description text."
     And I select "UA" from "Country"
     Then I should see "City"
-    And I fill in the following:
-      | City           | Lviv           |
-      | Street address | Fedkovycha 60a |
-      | Postal code    | 79000          |
-      | Oblast         | Lviv oblast    |
-    And I press "Create event"
-    Then I should see "This is a test event has been created."
-    And I should see "THIS IS A TEST EVENT"
-    And I should see "Technopark" in the "Main content"
-    And I should see "Body description text" in the "Main content"
-    And I should see "Fedkovycha 60a" in the "Main content"
-    And I should see "79000" in the "Main content"
-    And I should see "Lviv" in the "Main content"
-    And I should see "Lviv oblast" in the "Main content"
-    And I should see "1 Jan '25 11:00" in the "Main content"
