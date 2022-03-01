@@ -66,16 +66,42 @@ Feature: Content
     And I should see "Social Tag two"
 
   @api
-  Scenario: Create nodes with specific authorship
-    Given users:
-    | name     | mail            | status |
-    | Joe User | joe@example.com | 1      |
-    And "event" content:
-    | title        | author   | promote |
-    | Event by Joe | Joe User | 1       |
-    When I am logged in as a user with the "administrator" role
-    And I am on the homepage
-    Then I should see "Event by Joe"
+  Scenario: Successfully show my upcoming events as a Verified
+    Given I am on the homepage
+    Then I should not see "My upcoming events"
+
+    Given I am logged in as an "verified"
+    Then I should see "My upcoming events"
+    And I should see "No upcoming events"
+
+    Given I am viewing my event:
+      | title            | My Behat Event created |
+      | field_event_date | +8 days                |
+      | status           | 1                      |
+
+    And I am viewing an event:
+      | title            | My Behat Event enrolled |
+      | field_event_date | +8 days                 |
+      | status           | 1                       |
+
+    When I press the "Enroll" button
+    Then I should see "Enrolled"
+
+    When I go to the homepage
+    Then I should not see "My Behat Event created" in the ".view-display-id-block_my_upcoming_events" element
+    And I should see "My Behat Event enrolled" in the ".view-display-id-block_my_upcoming_events" element
+    And I should see "Enrolled" in the ".view-display-id-block_my_upcoming_events" element
+
+    When I am at "user"
+    And I click "Events"
+    Then I should see "Events for this user"
+    And I should see "My Behat Event created"
+    And I should see "My Behat Event enrolled"
+
+    When I am at "user"
+    Then I should see "My Behat Event created"
+    And I should see "My Behat Event enrolled"
+    And I should see "enrolled"
 
   @api
   Scenario: Successfully create event
