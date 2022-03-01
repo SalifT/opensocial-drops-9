@@ -75,9 +75,7 @@ Feature: Content
     | Event by Joe | Joe User | 1       |
     When I am logged in as a user with the "administrator" role
     And I am on the homepage
-    Then I should see the link "Event by Joe"
-    When I follow "Event by Joe"
-    Then I should see the text "Event by Joe"
+    Then I should see "Event by Joe"
 
   @api
   Scenario: Successfully create event
