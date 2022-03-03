@@ -13,14 +13,14 @@ default:
         features: '/tests-opensocial/behat/features'
         bootstrap: '/tests-opensocial/behat/features/bootstrap'
       contexts:
-        - Drupal\social\Behat\FeatureContext
-        - Drupal\social\Behat\SocialDrupalContext
-        - Drupal\social\Behat\SocialMessageContext
-        - Drupal\social\Behat\SocialMinkContext
+        - FeatureContext
+        - SocialDrupalContext
+        - SocialMessageContext
+        - SocialMinkContext
         - Drupal\DrupalExtension\Context\BatchContext
         - Drupal\DrupalExtension\Context\ConfigContext
-        - Drupal\social\Behat\PostContext
-        - Drupal\social\Behat\EmailContext
+        - PostContext
+        - EmailContext
   extensions:
       Drupal\MinkExtension:
         default_session: 'selenium2'
