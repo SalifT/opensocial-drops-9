@@ -24,7 +24,7 @@ default:
   extensions:
       Drupal\MinkExtension:
         default_session: 'selenium2'
-        base_url: 'http://web/'
+        # base_url: 'http://web/' set by env
         files_path: '/root/files/'
         goutte: ~
         selenium2:
