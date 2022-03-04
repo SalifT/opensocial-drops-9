@@ -1,6 +1,6 @@
 default:
   autoload:
-    '': %paths.base%/features/bootstrap
+    '': "%paths.base%/features/bootstrap"
   suites:
     default:
       parameters:
@@ -10,8 +10,8 @@ default:
             password: 'admin'
             mail: 'info+admin@example.com'
       paths:
-        features: '%paths.base%/features'
-        bootstrap: '%paths.base%/features/bootstrap'
+        features: "%paths.base%/features"
+        bootstrap: "%paths.base%/features/bootstrap"
       contexts:
         - FeatureContext
         - SocialDrupalContext
