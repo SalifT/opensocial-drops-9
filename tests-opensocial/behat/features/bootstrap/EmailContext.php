@@ -1,7 +1,7 @@
 <?php
 // @codingStandardsIgnoreFile
 
-namespace Drupal\social\Behat;
+// namespace Drupal\social\Behat;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;

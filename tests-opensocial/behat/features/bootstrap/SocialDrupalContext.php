@@ -1,7 +1,7 @@
 <?php
 // @codingStandardsIgnoreFile
 
-namespace Drupal\social\Behat;
+// namespace Drupal\social\Behat;
 
 use Drupal\advancedqueue\Annotation\AdvancedQueueJobType;
 use Drupal\advancedqueue\Commands\AdvancedQueueCommands;

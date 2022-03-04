@@ -1,7 +1,7 @@
 <?php
 // @codingStandardsIgnoreFile
 
-namespace Drupal\social\Behat;
+// namespace Drupal\social\Behat;
 
 use Behat\Mink\Exception\ExpectationException;
 use Drupal\DrupalExtension\Context\MessageContext;

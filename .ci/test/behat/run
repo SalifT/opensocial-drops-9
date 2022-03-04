@@ -36,4 +36,4 @@ echo
 ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --strict --colors  "$@"
 
 # Run the Behat tests for Opensocial
-./vendor/bin/behat --config=tests-opensocial/behat/config/behat.yml --strict --colors  "$@"
+./vendor/bin/behat --config=tests-opensocial/behat/behat.yml --strict --colors  "$@"

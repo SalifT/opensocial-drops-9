@@ -1,7 +1,7 @@
 <?php
 // @codingStandardsIgnoreFile
 
-namespace Drupal\social\Behat;
+// namespace Drupal\social\Behat;
 
 use Drupal\DrupalExtension\Context\MinkContext;
 use Behat\Behat\Context\Context;

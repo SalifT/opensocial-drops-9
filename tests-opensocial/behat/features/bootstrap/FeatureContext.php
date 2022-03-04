@@ -1,7 +1,7 @@
 <?php
 // @codingStandardsIgnoreFile
 
-namespace Drupal\social\Behat;
+// namespace Drupal\social\Behat;
 
 use Drupal\group\Entity\GroupContentType;
 use Behat\Behat\Context\Context;
