@@ -1,6 +1,6 @@
 default:
   autoload:
-    '': /tests-opensocial/behat/features/bootstrap
+    '': %paths.base%/features/bootstrap
   suites:
     default:
       parameters:
@@ -10,8 +10,8 @@ default:
             password: 'admin'
             mail: 'info+admin@example.com'
       paths:
-        features: '/tests-opensocial/behat/features'
-        bootstrap: '/tests-opensocial/behat/features/bootstrap'
+        features: '%paths.base%/features'
+        bootstrap: '%paths.base%/features/bootstrap'
       contexts:
         - FeatureContext
         - SocialDrupalContext
@@ -19,6 +19,7 @@ default:
         - SocialMinkContext
         - Drupal\DrupalExtension\Context\BatchContext
         - Drupal\DrupalExtension\Context\ConfigContext
+        - Drupal\DrupalExtension\Context\DrushContext
         - PostContext
         - EmailContext
   extensions:
