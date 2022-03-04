@@ -23,14 +23,16 @@ default:
         - PostContext
         - EmailContext
   extensions:
+      DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
       Drupal\MinkExtension:
         default_session: 'selenium2'
         # base_url: 'http://web/' set by env
         files_path: '/root/files/'
         goutte: ~
+        browser_name: chrome
         selenium2:
           wd_host: 'http://selenium:4444/wd/hub/'
-          browser: 'firefox'
+          browser: 'chrome'
       Drupal\DrupalExtension:
         # Drush Driver
         api_driver: 'drush'
