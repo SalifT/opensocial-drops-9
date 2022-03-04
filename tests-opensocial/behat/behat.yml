@@ -25,14 +25,22 @@ default:
   extensions:
       DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
       Drupal\MinkExtension:
-        default_session: 'selenium2'
         # base_url: 'http://web/' set by env
         files_path: '/root/files/'
         goutte: ~
         browser_name: chrome
-        selenium2:
-          wd_host: 'http://selenium:4444/wd/hub/'
-          browser: 'chrome'
+        default_session: 'command_line_browser'
+        javascript_session: 'js_enabled_browser'
+        sessions:
+          command_line_browser:
+            goutte: ~
+            js_enabled_browser:
+              chrome:
+                api_url: "http://localhost:9222"
+                validate_certificate: false
+        #selenium2:
+        #  wd_host: 'http://selenium:4444/wd/hub/'
+        #  browser: 'chrome'
       Drupal\DrupalExtension:
         # Drush Driver
         api_driver: 'drush'
