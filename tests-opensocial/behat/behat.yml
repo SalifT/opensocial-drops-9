@@ -34,13 +34,10 @@ default:
         sessions:
           command_line_browser:
             goutte: ~
-            js_enabled_browser:
-              chrome:
-                api_url: "http://localhost:9222"
-                validate_certificate: false
-        #selenium2:
-        #  wd_host: 'http://selenium:4444/wd/hub/'
-        #  browser: 'chrome'
+          js_enabled_browser:
+            chrome:
+              api_url: "http://localhost:9222"
+              validate_certificate: false
       Drupal\DrupalExtension:
         # Drush Driver
         api_driver: 'drush'
