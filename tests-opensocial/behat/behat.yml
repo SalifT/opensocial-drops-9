@@ -1,6 +1,6 @@
 default:
   autoload:
-    '': "%paths.base%/features/bootstrap"
+    '': "%paths.base%/../web/profiles/contrib/social/tests/behat/features/bootstrap"
   suites:
     default:
       parameters:
@@ -10,18 +10,17 @@ default:
             password: 'admin'
             mail: 'info+admin@example.com'
       paths:
-        features: "%paths.base%/features"
-        bootstrap: "%paths.base%/features/bootstrap"
+        features: "%paths.base%/../web/profiles/contrib/social/tests/behat/features"
+        bootstrap: "%paths.base%/../web/profiles/contrib/social/tests/behat/features/bootstrap"
       contexts:
-        - FeatureContext
-        - SocialDrupalContext
-        - SocialMessageContext
-        - SocialMinkContext
+        - Drupal\social\Behat\FeatureContext
+        - Drupal\social\Behat\SocialDrupalContext
+        - Drupal\social\Behat\SocialMessageContext
+        - Drupal\social\Behat\SocialMinkContext
         - Drupal\DrupalExtension\Context\BatchContext
         - Drupal\DrupalExtension\Context\ConfigContext
-        - Drupal\DrupalExtension\Context\DrushContext
-        - PostContext
-        - EmailContext
+        - Drupal\social\Behat\PostContext
+        - Drupal\social\Behat\EmailContext
   extensions:
       DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
       Drupal\MinkExtension:
