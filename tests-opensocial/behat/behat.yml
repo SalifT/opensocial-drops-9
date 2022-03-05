@@ -1,6 +1,6 @@
 default:
   autoload:
-    '': "%paths.base%/../web/profiles/contrib/social/tests/behat/features/bootstrap"
+    '': "%paths.base%/../../web/profiles/contrib/social/tests/behat/features/bootstrap"
   suites:
     default:
       parameters:
@@ -10,8 +10,8 @@ default:
             password: 'admin'
             mail: 'info+admin@example.com'
       paths:
-        features: "%paths.base%/../web/profiles/contrib/social/tests/behat/features"
-        bootstrap: "%paths.base%/../web/profiles/contrib/social/tests/behat/features/bootstrap"
+        features: "%paths.base%/../../web/profiles/contrib/social/tests/behat/features"
+        bootstrap: "%paths.base%/../../web/profiles/contrib/social/tests/behat/features/bootstrap"
       contexts:
         - Drupal\social\Behat\FeatureContext
         - Drupal\social\Behat\SocialDrupalContext
