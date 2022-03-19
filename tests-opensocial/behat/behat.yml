@@ -22,30 +22,31 @@ default:
         - Drupal\social\Behat\PostContext
         - Drupal\social\Behat\EmailContext
   extensions:
-      DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
       Drupal\MinkExtension:
-        # base_url: 'http://web/' set by env
+        default_session: 'selenium2'
+        javascript_session: 'selenium2'
+        base_url: 'http://localhost/pantheon/Localbaseddev/repository/opensocial-drops-9/web'
         files_path: '/root/files/'
         goutte: ~
-        browser_name: chrome
-        default_session: 'command_line_browser'
-        javascript_session: 'js_enabled_browser'
-        sessions:
-          command_line_browser:
-            goutte: ~
-          js_enabled_browser:
-            chrome:
-              api_url: "http://localhost:9222"
-              validate_certificate: false
+        selenium2:
+          #wd_host: "http://localhost:4444"
+          wd_host: "http://localhost:4444/wd/hub"
+          browser: 'chrome'
+          #capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600', '--headless']}, "marionette": true}
+          #capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600']}, "marionette": true}
+          #capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600', '--headless']}}
+          capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600']}}
+          #capabilities: {"browserName": "chrome", "browser": "chrome"}
+          #browser: 'firefox'
+          #capabilities: {"browserName": "firefox", "browser": "firefox", "marionette": true}
+          #capabilities: {"browserName": "firefox", "browser": "firefox"}
       Drupal\DrupalExtension:
-        # Drush Driver
-        api_driver: 'drush'
-        # Drpal API Driver
-        # See https://behat-drupal-extension.readthedocs.io/en/v4.0.1/drush.html
-        #Uncomment lines below to use Drupal API Driver
-        # api_driver: 'drupal'
-        # drupal:
-        #   drupal_root: './web'
+        drush:
+          alias: '@self'
+        blackbox: ~
+        api_driver: 'drupal'
+        drupal:
+          drupal_root: '/Users/salifutraore/sites/pantheon/Localbaseddev/REPOSITORY/opensocial-drops-9/web'
         selectors:
           message_selector: '.alert'
           error_message_selector: '.alert.alert-danger'
