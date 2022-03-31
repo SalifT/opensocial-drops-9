@@ -25,7 +25,7 @@
         "drupal/core-recommended": "^9",
         "drush-ops/behat-drush-endpoint": "^9.3",
         "drush/drush": "^10",
-        "goalgorilla/open_social": "~11.0.7",
+        "goalgorilla/open_social": "~11.1.1",
         "monolog/monolog": "^2.3.5",
         "pantheon-systems/drupal-integrations": "^8",
         "pantheon-systems/quicksilver-pushback": "^2.0"
