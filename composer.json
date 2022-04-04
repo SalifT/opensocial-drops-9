@@ -1,6 +1,6 @@
 {
-    "name": "pantheon-systems/drupal-9-with-circleci-orb",
-    "description": "Install Opensocial 11 and Drupal 9 with Composer on Pantheon using CI.",
+    "name": "salift/opensocial-drops-9",
+    "description": "Install Open Social and Drupal 9 with Composer on Pantheon using CI.",
     "type": "project",
     "license": "GPL-2.0+",
     "repositories": [
