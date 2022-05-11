@@ -25,28 +25,22 @@ default:
       Drupal\MinkExtension:
         default_session: 'selenium2'
         javascript_session: 'selenium2'
-        base_url: 'http://localhost/pantheon/Localbaseddev/repository/opensocial-drops-9/web'
+        #base_url: 'http://localhost/Localbaseddev/repository/opensocial-drops-9/web/'
         files_path: '/root/files/'
-        goutte: ~
-        selenium2:
-          #wd_host: "http://localhost:4444"
-          wd_host: "http://localhost:4444/wd/hub"
-          browser: 'chrome'
-          #capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600', '--headless']}, "marionette": true}
-          #capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600']}, "marionette": true}
-          #capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600', '--headless']}}
-          capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600']}}
-          #capabilities: {"browserName": "chrome", "browser": "chrome"}
-          #browser: 'firefox'
-          #capabilities: {"browserName": "firefox", "browser": "firefox", "marionette": true}
-          #capabilities: {"browserName": "firefox", "browser": "firefox"}
+        goutte:
+          guzzle_parameters:
+            verify: false
+            ssl.certificate_authority: false
+        #selenium2:
+          #wd_host: "http://localhost:4444/wd/hub"
       Drupal\DrupalExtension:
         drush:
           alias: '@self'
         blackbox: ~
         api_driver: 'drupal'
         drupal:
-          drupal_root: '/Users/salifutraore/sites/pantheon/Localbaseddev/REPOSITORY/opensocial-drops-9/web'
+          #drupal_root: '/Users/salifutraore/sites/pantheon/Localbaseddev/REPOSITORY/opensocial-drops-9/web'
+          drupal_root: '../../web'
         selectors:
           message_selector: '.alert'
           error_message_selector: '.alert.alert-danger'
@@ -66,3 +60,40 @@ default:
           'Sidebar second': 'aside[role=complementary]'
           'Modal': '#drupal-modal'
           'Modal footer': '.modal-footer'
+
+# Run test on firefox
+# Usage:
+#   bin/behat --profile=chrome
+chrome:
+  extensions:
+      Drupal\MinkExtension:
+        #base_url: 'http://localhost/Localbaseddev/repository/opensocial-drops-9/web/'
+        base_url: 'http://opensocial11.test'
+        selenium2:
+          wd_host: "http://localhost:4444/wd/hub"
+          browser: 'chrome'
+          #capabilities: {"browserName": "chrome", "browser": "chrome", "version": "*", "extra_capabilities": {"chromeOptions": {"w3c": false}}, "marionette": true, 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600', '--headless']}}
+          #capabilities: {"browserName": "chrome", "browser": "chrome", "version": "*", "extra_capabilities": {"chromeOptions": {"w3c": false}}, "marionette": true, 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600']}}
+          #capabilities: {"browserName": "chrome", "browser": "chrome", "version": "*", "extra_capabilities": {"chromeOptions": {"w3c": false}}, 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600']}}
+          capabilities: {"browserName": "chrome", "browser": "chrome", "version": "*", "extra_capabilities": {"chromeOptions": {"w3c": false}}, "marionette": true}
+          #capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600']}, "marionette": true}
+          #capabilities: {"browserName": "chrome", "browser": "chrome", 'chrome': {'switches': ['--disable-gpu', '--window-size=1280,1600', '--headless']}}
+          #capabilities: {"browserName": "chrome", "browser": "chrome", "version": "*", "extra_capabilities": {"chromeOptions": {"w3c": false}}}
+          #capabilities: {"browserName": "chrome", "browser": "chrome"}
+
+# Run test on firefox
+# Usage:
+#   bin/behat --profile=firefox
+firefox:
+  extensions:
+      Drupal\MinkExtension:
+        #base_url: 'http://localhost/Localbaseddev/repository/opensocial-drops-9/web/'
+        base_url: 'http://opensocial11.test'
+        selenium2:
+          wd_host: "http://localhost:4444/wd/hub"
+          browser: 'firefox'
+          #capabilities: {"browserName": "firefox", "browser": "firefox", "marionette": true, "version": "*", "extra_capabilities": {"firefoxOptions": '--headless'}}
+          #capabilities: {"browserName": "firefox", "browser": "firefox", "marionette": true, "version": "*", "extra_capabilities": {"firefoxOptions": {"arg": ['--headless', '--width=2560', '--height=1440']}}}
+          capabilities: {"browserName": "firefox", "browser": "firefox", "marionette": true, "version": "*", "extra_capabilities": {"firefoxOptions": {"arg": ['--headless', '--window-size=1920,1080']}}}
+          #capabilities: {"browserName": "firefox", "browser": "firefox", "marionette": true, "version": "*", "extra_capabilities": {"firefoxOptions": ['--headless', '--width=2560', '--height=1440']}}
+          #capabilities: {"browserName": "firefox", "browser": "firefox", "marionette": true, "version": "*"}
