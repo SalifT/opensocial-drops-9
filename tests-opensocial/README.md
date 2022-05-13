@@ -1,6 +1,7 @@
 
 
 # Behat Drupal Extension System-wide installation
+
 A system-wide installation allows you to maintain a single copy of the testing toolset and use it for multiple test environments.
 Configuration is slightly more complex than the stand-alone installation but many people prefer the flexibility and ease of maintenance this setup provides.
 
@@ -8,6 +9,7 @@ _Follow the Behat Drupal Extension at https://behat-drupal-extension.readthedocs
 _to make a system-wide installation_
 
 ## Overview
+
 To install the Drupal Extension globally:
 
 ```
@@ -17,6 +19,7 @@ To install the Drupal Extension globally:
 4 Create your test folder
 ```
 ## Install Composer
+
 Composer is a PHP dependency manager that will make sure all the pieces you need get installed. Full directions for global installation and more information can be found on the Composer website.:
 ```
 curl -sS https://getcomposer.org/installer |
@@ -25,12 +28,14 @@ php mv composer.phar /usr/local/bin/composer
 ## Install the Drupal Extension
 
 ### 1 Make a directory in /opt (or wherever you choose) for the Drupal Extension:
+
 ```
 cd /opt/
 sudo mkdir drupalextension
 cd drupalextension/
 ```
 ### 2 Create a file called composer.json and include the following:
+
 ```
 {
   "require": {
@@ -54,7 +59,12 @@ composer install
 It will be a bit before you start seeing any output. It will also suggest that you install additional tools, but they’re not normally needed so you can safely ignore that message.
 
 ### 4 Test that your install worked by typing the following:
+
+In the terminal, cd to/path/to/where/resides/the/behat.yml
+From this project root, it's tests-opensocial/behat/behat.yml
+
 ```
+cd tests-opensocial/behat
 bin/behat --help
 ```
 If you were successful, you’ll see the help output.
@@ -67,6 +77,7 @@ ln -s /opt/drupalextension/bin/behat /usr/local/bin/behat
 ## Set up tests
 
 ### 1 Create the directory that will hold your tests.
+
 There is no technical reason this needs to be inside the Drupal directory at all. It is best to keep them in the same version control repository so that the tests match the version of the site they are written for.
 One clear pattern is to keep them in the sites folder as follows:
 
@@ -101,12 +112,17 @@ Then take a look hereby at the tests-opensocial/behat/behat.yml file we've confi
 It's configured to support tests on two different browsers: chrome and firefox.
 
 ### 3 Initialize behat.
-This creates the features folder with some basic things to get you started:
+
+In the terminal, cd to/path/to/where/resides/the/behat.yml
+From this project root, it's tests-opensocial/behat/behat.yml
 ```
+cd tests-opensocial/behat
 bin/behat --init
 ```
+This creates the features folder with some basic things to get you started
 
 ### 4 This will generate a FeatureContext.php file that looks like this:
+
 ```
 <?php
 
@@ -139,7 +155,9 @@ The FeatureContext.php file must be in the same directory as your behat.yml file
 [BehatBehatContextExceptionContextNotFoundException] FeatureContext context class not found and can not be used.
 
 ### 5 To ensure everything is set up appropriately, type:
+
 ```
+cd tests-opensocial/behat
 behat -dl
 ```
 You’ll see a list of steps like the following, but longer, if you’ve installed everything successfully:
@@ -151,15 +169,19 @@ You’ll see a list of steps like the following, but longer, if you’ve install
 ```
 
 # Download ChromeDriver and GeckoDriver
+
 Go to the below address and download the drivers for your operating system. In this case Mac os.
 From https://www.selenium.dev/downloads/ :
-### 1 scroll down to Platforms Supported by Selenium
+
+### 1 Scroll down to Platforms Supported by Selenium
 ### 2 Click on [+ Browsers]
 ### 3 Click on Documentation in front of the browser you want to download the version that matches your computer browser version
+
 For Chromedriver: https://sites.google.com/chromium.org/driver/ > download or  https://chromedriver.chromium.org/ > download
 For Gekodriver: https://firefox-source-docs.mozilla.org/testing/geckodriver/Support.html > releases
 
 ## Move the drivers to the /usr/local/bin folder
+
 /usr/local/bin folder should be defined as a global path on your system.
 To check that, run the following command in terminal
 ```
@@ -179,25 +201,30 @@ After this step, re-run your tests, chrome driver will work.
 Same for geckodriver.
 
 # Download and configure Selenium
+
 https://www.selenium.dev/downloads/
 For this use case, we are using selenium server standalone version 3.141.59
 Scroll down to Previous Releases and click releases
 https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.141.59/selenium-server-standalone-3.141.59.jar
 
-## create a seleniumgrid folder under username
-and copy the .jar file under the username > seleniumgrid folder
+## Create a seleniumgrid folder under username
+
+Unpack and copy the selenium-server-standalone-3.141.59.jar file from Downloads and paste it under the username/seleniumgrid folder
 
 ## Configure Selenium
+
 Selenium can be configured to run as a hub, a node, or standalone. For this tutorial, we'll configure the hub first, then add a node.
 
 ## What are Hub and Nodes?
+
 We have a Hub which is a server that we connect from our tests and we have Nodes.
 Nodes can be on different machines and they register with the hub.
 Simply, we have a hub and several nodes.
 Nodes are registered in our hub and the hub knows which browsers are available.
 Hub sends requests to the nodes based on desired capabilities and executes the tests.
 
-## download the hub and node config files from the below addresses
+## download the hub and the node config files from the below addresses
+
 Download the Hub config at https://github.com/SeleniumHQ/selenium/blob/selenium-3.141.59/java/server/src/org/openqa/grid/common/defaults/DefaultHub.json
 Save the bellow file as hub.json under the seleniumgrid folder.
 ```
@@ -281,7 +308,7 @@ osascript -e 'tell app "Terminal"
     java -jar -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver selenium-server-standalone.jar -role node -nodeConfig node.json"
 end tell'
 ```
-This script automatically starts node and hub.
+This script automatically starts the node and the hub.
 
 Note: If you also download and move the firefox driver (geckodriver) to the /usr/local/bin folder, you can use the below script. It registers both Firefox and Chrome drivers.
 
@@ -308,6 +335,9 @@ Run the script willstart the selenium grid
 ```
 
 # Run behat test
+
+cd to/path/to/where/resides/the/behat.yml
+From this project root, it's tests-opensocial/behat/behat.yml
 
 Run test on default profile:
 ```
