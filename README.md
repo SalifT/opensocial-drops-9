@@ -192,7 +192,7 @@ terminus drush machine-name-for-new-site.dev social-demo:remove user topic --pro
 Generates 100 demo users and 2000 topics:
 
 ```
-terminus drush machine-name-for-new-site.dev drush social-demo:generate user:100 topic:2000 event:500 group:100
+terminus drush machine-name-for-new-site.dev social-demo:generate user:100 topic:2000 event:500 group:100
 ```
 
 Next, deploy to the Pantheon Test and Live environments. When pull requests are created on your GitHub repo they will generate Multidev environments on Pantheon that clone the database and files from the Live environment. Be sure to replace `machine-name-for-new-site` with the machine name you chose above.
