@@ -19,6 +19,7 @@ Be sure that you:
 * You have Install and configure Git and Composer on your local computer.
   * Composer: https://getcomposer.org/download/, the package manager for PHP, installed on your machine.
   * Mac users can use Homebrew: https://brew.sh/ to install both Git and Composer, along with their required dependencies:
+
     ```
     brew install git composer
     ```
@@ -29,15 +30,33 @@ A command-line interface that allows you to control your Pantheon account and si
 Virtually anything you can do in your Pantheon Dashboard, you can script with Terminus. It can also make remote Drush calls on your environments without having Drush installed locally, eliminating incompatibility issues between locally and remotely installed versions of Drush.
 As you have a Composer-based site, Terminus will use the version of Drush it finds in vendor/bin/drush when running Drush commands on the platform.
 * If you don't have it yet installed on your system, refer to this document https://pantheon.io/docs/terminus/install to install terminus.
-* Generate a Machine Token in the Pantheon dashboard by clicking **User Dashboard > Account > Machine Tokens**. Use the Machine Token to authenticate Terminus:
+* [Generate a Pantheon Machine Token](https://dashboard.pantheon.io/machine-token/create) in the Pantheon dashboard by clicking **User Dashboard > Account > Machine Tokens**. Use the Machine Token to authenticate Terminus:
+
   ```
   terminus auth:login --machine-token=‹machine-token›
   ```
+
 * Verify your session after installation:
+
   ```
   terminus site:list
   ```
+
   If your Pantheon site is on the list, installation and authentication were successful!
+* Install the [Terminus Build Tools](https://github.com/pantheon-systems/terminus-build-tools-plugin):
+
+  ```
+  terminus self:plugin:install terminus-build-tools-plugin
+  ```
+
+## Access Tokens
+
+The Build Tools plugin will prompt you to create access tokens for the services you use as an alternative to a password. Access tokens are stored as environment variables. Access token requirements vary by service. Read below for specific access token requirements.
+* [GitHub](https://github.com/settings/tokens): The GitHub token checks for the following scopes:
+  * repo (required)
+  * delete-repo (optional)
+  * workflow (required if using Github Actions instead of CircleCi)
+* [CircleCI](https://circleci.com/account/api): No scopes are configurable for this token.
 
 ## Install your Open Social site on Pantheon
 
@@ -169,7 +188,7 @@ terminus drush machine-name-for-new-site.dev demo-content:add file user group to
 
 _The order (e.g. file -> user -> group) is important because the content is dependent on each other._
 
-To reemove the content use the following command:
+To remove the content use the following command:
 
 ```
 terminus drush machine-name-for-new-site.dev demo-content:remove file user group topic event event_enrollment comment post like
@@ -195,6 +214,9 @@ Generates 100 demo users and 2000 topics:
 terminus drush machine-name-for-new-site.dev social-demo:generate user:100 topic:2000 event:500 group:100
 ```
 
+## Development workflow
+
+Use the [Pantheon Build Tools integration Guide](https://pantheon.io/docs/guides/build-tools) to develop your project using Github, CircleCI, and Multidev/Dev environments to have a really nice development workflow.
 Next, deploy to the Pantheon Test and Live environments. When pull requests are created on your GitHub repo they will generate Multidev environments on Pantheon that clone the database and files from the Live environment. Be sure to replace `machine-name-for-new-site` with the machine name you chose above.
 
 ```
