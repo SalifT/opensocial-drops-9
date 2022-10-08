@@ -18,14 +18,14 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 || ^8.0",
         "composer/installers": "~1.9",
         "cweagans/composer-patches": "^1.7",
-        "drupal/core-composer-scaffold": "^9",
-        "drupal/core-recommended": "^9",
+        "drupal/core-composer-scaffold": "^9.3",
+        "drupal/core-recommended": "^9.3",
         "drush-ops/behat-drush-endpoint": "^9.3",
-        "drush/drush": "^10",
-        "goalgorilla/open_social": "~11.3.0",
+        "drush/drush": "^11",
+        "goalgorilla/open_social": "~11.4.4",
         "monolog/monolog": "^2.3.5",
         "pantheon-systems/drupal-integrations": "^8",
         "pantheon-systems/quicksilver-pushback": "^2.0"
@@ -88,6 +88,13 @@
         "patches": {
             "drupal/core": {
                 "db version": "https://raw.githubusercontent.com/stevector/drupal-9-project/master/patches/issue-2--mariadb-version.patch"
+            }
+        },
+        "patches-ignore": {
+            "goalgorilla/open_social": {
+                "drupal/coder": {
+                    "Allow class property types instead of @var comments": "https://www.drupal.org/files/issues/2021-09-21/coder-3123282-3.patch"
+                }
             }
         },
         "composer-exit-on-patch-failure": true,
